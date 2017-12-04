@@ -1,0 +1,25 @@
+.App {
+  text-align: center;
+}
+
+body {
+  background-color: #c9c9c9;
+}
+
+.gameBoard {
+  max-width: 510px;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+}
+
+.box {
+  margin: 10px;
+  height: 130px;
+  width: 130px;
+  background-color: #fff;
+  padding: 10px;
+  text-align: center;
+  font-size: 100%;
+}
+
