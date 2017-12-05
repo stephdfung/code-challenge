@@ -16,10 +16,10 @@ class Cell extends Component {
 
 //user selects a cell and we check to see if the cell has been played yet. if not, update the state, rerender the component, and pop the cell from the array and update the players turn to comp
   playMove() {
-    if (this.props.cellState !== '') {
+    if (this.props.cellState !== 4) {
       return
     } else {
-      this.props.updateCellState(this.props.id, 'player')
+      this.props.updateCellState(this.props.id, 0)
       this.setState({
         turn: 'comp'
       })
@@ -38,7 +38,7 @@ class Cell extends Component {
     let compCell = arr[Math.floor(Math.random() * arr.length)]
 
     if (this.state.turn === 'comp') {
-      this.props.updateCellState(compCell, 'comp')
+      this.props.updateCellState(compCell, 1)
       this.setState({
         turn: 'player'
       })} else {return}
@@ -47,11 +47,11 @@ class Cell extends Component {
 
   //conditional rendering of the cell
   renderCell() {
-    if (this.props.cellState === 'player') {
+    if (this.props.cellState === 0) {
       return (
         <PlayerCell />
       )
-    } else if (this.props.cellState === 'comp') {
+    } else if (this.props.cellState === 1) {
       return (
         <CompCell />
       )
