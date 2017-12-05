@@ -17,10 +17,8 @@ class Cell extends Component {
 //user selects a cell and we check to see if the cell has been played yet. if not, update the state, rerender the component, and pop the cell from the array and update the players turn to comp
   playMove() {
     if (this.props.cellState !== '') {
-      console.log('returning from the if statement bc this cell has been used', this.props.cellState)
       return
     } else {
-      console.log('cell not used, we are updating the cell state')
       this.props.updateCellState(this.props.id, 'player')
       this.setState({
         turn: 'comp'
