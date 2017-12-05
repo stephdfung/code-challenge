@@ -6,7 +6,7 @@ class Cell extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      counter: 0
+      turn: ''
     }
 
     this.renderCell = this.renderCell.bind(this)
@@ -14,45 +14,40 @@ class Cell extends Component {
     this.compMove = this.compMove.bind(this)
   }
 
-  //this is where i am having trouble targeting the cellStates object that i passed as a prop. I only need to read the current state and based on that info, i can do something after.
+//user selects a cell and we check to see if the cell has been played yet. if not, update the state, rerender the component, and pop the cell from the array and update the players turn to comp
   playMove() {
     if (this.props.cellState !== '') {
       console.log('returning from the if statement bc this cell has been used', this.props.cellState)
       return
     } else {
       console.log('cell not used, we are updating the cell state')
-      let user = 'player'
       this.props.updateCellState(this.props.id, 'player')
-      //calling the function in the parent to update the cellState to player, and then to remove the cell from the availCells array
       this.setState({
-        counter: this.state.counter+= 1
+        turn: 'comp'
       })
-      //counter will keep track of the turn
+      //calling the function in the parent to update the cellState to player, and then to remove the cell from the availCells array
+      this.compMove();
     }
   }
 
   componentDidUpdate() {
-    if (this.state.counter % 2 === 1) {
-      return
-    } else if (this.state.counter % 2 === 0) {
-      this.compMove()
-    }
-    //if the user has just went, the computer will run it's turn
-    //state updates way too slowly for this to actually work!!!
+    this.compMove()
   }
+
 
   compMove() {
     let arr = this.props.availCells
     let compCell = arr[Math.floor(Math.random() * arr.length)]
-    console.log(compCell)
 
-    this.props.updateCellState(compCell, 'comp')
-    this.setState({
-      counter: this.state.counter+= 1
-    })
+    if (this.state.turn === 'comp') {
+      this.props.updateCellState(compCell, 'comp')
+      this.setState({
+        turn: 'player'
+      })} else {return}
+      
   }
 
-  //in this function i need to do the same thing. i want to read the current cellState and render based on that info.
+  //conditional rendering of the cell
   renderCell() {
     if (this.props.cellState === 'player') {
       return (

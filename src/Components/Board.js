@@ -21,7 +21,7 @@ class Board extends Component {
     this.updateCellState = this.updateCellState.bind(this)
   }
 // cellStates will be labled '', or 'player', or 'comp' depending on who has played that cell
-//availCells will help the comp know which cells it can move into
+//availCells will help the comp know which cells it can play
 
   updateCellState(cell, user) {
     this.setState({
@@ -30,6 +30,8 @@ class Board extends Component {
     })
   }
   //function to set the state of the cellStates and remove the cell from the array when used
+
+
 
   //below i'm passing the cellState, the avaiLCell and the updtateCellState function as props
   render() {
