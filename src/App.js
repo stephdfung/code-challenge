@@ -14,7 +14,6 @@ class App extends Component {
   }
 
   winner(winner) {
-    console.log('inside winner thing ', winner)
     if (winner === 0) {
       this.setState({
         winner: 'You'

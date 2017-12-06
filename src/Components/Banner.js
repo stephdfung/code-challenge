@@ -4,24 +4,31 @@ class Banner extends Component {
   constructor(){
     super();
     this.renderBanner = this.renderBanner.bind(this)
+    this.reloadPage = this.reloadPage.bind(this)
+  }
+
+  reloadPage() {
+    window.location.reload()
   }
 
   renderBanner() {
     if (this.props.message === false) {
       return (
-        <div>
-          <h2>Tic Tac Toe</h2>
-          <p>Three in a row win! Click to play!</p>
+        <div className="banner">
+          <h2>TIC TAC TOE</h2>
+          <p>Get three in a row to win. Click a space on the board to start.</p>
         </div>
-      )} else if (this.props.message) {
+      )} else if (this.props.message === 'The Computer' || this.props.message === 'You') {
         return (
-          <div>
-            <h2 onClick={window.location.reload}>{this.props.message} won! Click here to play again!</h2>
+          <div className="banner">
+            <h3>{this.props.message} won!</h3>
+            <p onClick={this.reloadPage}>Click here to reset the board.</p>
           </div>
       )} else if (this.props.message === 'draw') {
         return (
           <div>
-            <h2 onClick={window.location.reload}>It's a draw! Click to play again!</h2>
+            <h3>It's a draw!</h3>
+            <p onClick={this.reloadPage}>Click here to reset the board.</p>
           </div>
         )
       }

@@ -5,7 +5,7 @@ class CompCell extends Component {
   render() {
     return (
       <div className="box">
-        O
+        <h4>O</h4>
       </div>
     )
   }

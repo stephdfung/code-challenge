@@ -4,6 +4,36 @@
 
 body {
   background-color: #c9c9c9;
+  font-family: Helvetica, sans-serif;
+}
+
+.banner {
+  height: 100px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: white;
+}
+
+h3 {
+  color: white;
+  font-size: 30px;
+  margin: 10px;
+  padding: 0;
+}
+
+h2 {
+  font-size: 30px;
+  color: white;
+  margin: 0;
+}
+
+p {
+  color: #6f6f6f;
+  margin: 10px;
 }
 
 .gameBoard {
@@ -23,3 +53,16 @@ body {
   font-size: 100%;
 }
 
+h4, h5 {
+  font-size: 110px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+h4 {
+  color: lightblue;
+}
+
+h5 {
+  color: orange;
+}

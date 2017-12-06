@@ -5,7 +5,7 @@ class PlayerCell extends Component {
   render() {
     return (
       <div className="box">
-        X
+        <h5>X</h5>
       </div>
     )
   }
