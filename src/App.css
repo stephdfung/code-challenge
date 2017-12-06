@@ -66,3 +66,32 @@ h4 {
 h5 {
   color: orange;
 }
+
+@media screen and (max-width: 549px) and (min-width: 249px) {
+  .gameBoard {
+    max-width: 315px;
+    margin: 0 auto;
+  }
+
+  .box {
+    margin: 5px;
+    height: 75px;
+    width: 75px;
+  }
+
+  h4, h5 {
+    font-size: 65px;
+  }
+
+  .banner {
+    height: 75px;
+  }
+
+  h3, h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+}

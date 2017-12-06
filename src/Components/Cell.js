@@ -8,10 +8,11 @@ class Cell extends Component {
 
     this.renderCell = this.renderCell.bind(this)
     this.playMove = this.playMove.bind(this)
-    // this.compMove = this.compMove.bind(this)
   }
 
-//user selects a cell and we check to see if the cell has been played yet. if not, update the state, rerender the component, and pop the cell from the array and update the players turn to comp
+//The player selects a cell and we check to see if the cell has been played yet.
+//If not we update the state of the cell to the player, which causes the cell to be rerendered with an X
+// and pop the cell from the array and update the turn to computer in the parent component
   playMove() {
     if (typeof this.props.cellState !== 'string') {
       return
@@ -20,7 +21,7 @@ class Cell extends Component {
     }
   }
 
-  //conditional rendering of the cell
+  //Conditional rendering of the cell based on the cell's state
   renderCell() {
     if (this.props.cellState === 0) {
       return (

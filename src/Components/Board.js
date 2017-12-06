@@ -27,8 +27,11 @@ class Board extends Component {
     this.nextTurn = this.nextTurn.bind(this)
     this.compMove = this.compMove.bind(this)
   }
-// cellStates will be labled 4, or 'player' 0 , or 'comp' 1 depending on who has played that cell
-//availCells will help the comp know which cells it can play
+// We have a few states here
+// Individual cell states that will be updated to either player or comp
+// An array containing all the available cells that have not yet been played
+// And a move tracker to determine who's move it is. It assists with the winCheck function
+// and it assists with the computer's turn logic
 
   updateCellState(cell, user) {
     this.setState({
@@ -39,6 +42,9 @@ class Board extends Component {
         this.checkForWin();
     })
   }
+// After the player has chosen a cell, this function is called as prop from the child and feeds
+// in the cell ID, removes the cell from the array in state, and changes the nextMove state so
+// so the computer can have their turn, and the checkForWin function is a callback here
 
   updateCompState(cell, user) {
     this.setState({
@@ -56,6 +62,7 @@ class Board extends Component {
     this.updateCompState(compCell, 1)   
   }
 
+// A helper function for the computer to move. Only if the nextMove state is true will the computer be able to go.
   nextTurn() {
     if (this.state.nextMove === true) {
       this.setState({
@@ -66,9 +73,7 @@ class Board extends Component {
     }
   }
 
-  //function to set the state of the cellStates and remove the cell from the array when used
-
-  //when the component is updated, check how many turns have been run by the length of the remaining array. if it's less than 5 and a winner hasn't been declared, check for a winner.
+  //Check how many turns have been run by the length of the remaining array. Ff it's less than 4 and a winner hasn't been declared, check for a winner. If not, move on to the next turn.
   checkForWin() {
     if ((this.state.availCells.length <= 4) && (this.state.winner === '')) {
       this.winCheck()
@@ -77,6 +82,7 @@ class Board extends Component {
     }
   }
 
+  // Checking for all the possible win solutions, and also accounts for potential draws.
   winCheck() {
     if (this.state.A1 === this.state.A2 && this.state.A2 === this.state.A3) {
       this.updateState(this.state.A2)
@@ -99,17 +105,15 @@ class Board extends Component {
     } else {this.nextTurn()}
   }
 
-  //once a winner has been declared, send their info up to App.js to be passed to the Banner.js
+  //Once a winner has been declared, send their info up to App.js to be passed to the Banner.js
   updateState(winner){
-    // if (winner === 0 || 1 || 'draw') {
       this.props.winner(winner)
       this.setState({
         winner: winner
       })
-    // }
   }
 
-  //below i'm passing the cellState, the avaiLCell and the updtateCellState function as props
+  //Below I'm passing the cellState, the avaiLCell and the updtateCellState function as props
   render() {
     return (
       <div className="gameBoard">
