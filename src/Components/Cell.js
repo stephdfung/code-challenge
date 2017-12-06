@@ -13,38 +13,12 @@ class Cell extends Component {
 
 //user selects a cell and we check to see if the cell has been played yet. if not, update the state, rerender the component, and pop the cell from the array and update the players turn to comp
   playMove() {
-    console.log('playMove() running')
-    if (this.props.cellState !== 4) {
+    if (typeof this.props.cellState !== 'string') {
       return
     } else {
       this.props.updateCellState(this.props.id, 0)
-      // this.setState({
-      //   turn: 'comp'
-      // })
-      console.log('inside playMove')
-      //calling the function in the parent to update the cellState to player, and then to remove the cell from the availCells array
-      // this.compMove();
     }
   }
-
-  // componentDidUpdate() {
-  //   console.log('celljs component did update')
-  //   this.compMove()
-  // }
-
-
-  // compMove() {
-  //   console.log('comp')
-  //   let arr = this.props.availCells
-  //   let compCell = arr[Math.floor(Math.random() * arr.length)]
-
-  //   if (this.state.turn === 'comp') {
-  //     this.props.updateCellState(compCell, 1)
-  //     this.setState({
-  //       turn: 'player'
-  //     })} else {return}
-      
-  // }
 
   //conditional rendering of the cell
   renderCell() {

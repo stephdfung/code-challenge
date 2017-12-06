@@ -26,7 +26,7 @@ class Banner extends Component {
           </div>
       )} else if (this.props.message === 'draw') {
         return (
-          <div>
+          <div className="banner">
             <h3>It's a draw!</h3>
             <p onClick={this.reloadPage}>Click here to reset the board.</p>
           </div>

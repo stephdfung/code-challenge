@@ -18,11 +18,11 @@ class App extends Component {
       this.setState({
         winner: 'You'
       })
-    } else if ([winner] === 3) {
+    } else if (winner === 1) {
       this.setState({
         winner: 'The Computer'
       })
-    } else if ([winner] === 'draw') {
+    } else if (winner === 'draw') {
       this.setState({
         winner: 'draw'
       })
